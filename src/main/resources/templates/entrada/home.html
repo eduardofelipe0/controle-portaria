@@ -1,58 +1,17 @@
-<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-<div class="container my-2" th:fragment="corpo">
-	<br><br><br><br><br>
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-		<div class="col">
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h4 class="my-0 fw-normal">Entradas/Saídas de Veículos</h4>
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>• Adicionar Entradas</li>
-						<li>• Listar Entradas</li>
-						<li>• Gerar Relatório</li>
-					</ul>
-					<a class="w-100 btn btn-lg btn-dark" th:href="@{/entradas/status?statusEntrada=ABERTA}">Acessar</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-15">
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h4 class="my-0 fw-normal">Entradas/Saídas de Objetos</h4>
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>• Registrar Entrada e Saída de Objetos</li>
-						<li>• Visualizar Objetos Pendentes</li>
-						<li>• Listagem de Objetos</li>
-					</ul>
-					<a class="w-100 btn btn-lg btn-dark" th:href="@{/objetos/listar}">Acessar</a>
-				</div>
-			</div>
-		</div>
-		<div sec:authorize="hasAuthority('ADMIN')">
-			<div class="col-30">
-				<div class="card mb-4 shadow-sm">
-					<div class="card-header">
-						<h4 class="my-0 fw-normal">Usuários</h4>
-					</div>
-					<div class="card-body">
-						<ul class="list-unstyled mt-3 mb-4">
-							<li>• Adicionar Usuários</li>
-							<li>• Listar Usuários</li>
-							<li>• Editar/Remover Usuários</li>
-						</ul>
-						<a class="w-100 btn btn-lg btn-dark" th:href="@{/usuarios/listar}">Acessar</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-	</div>
-
-</html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body><div th:fragment="corpo" class="dashboard-page">
+  <div class="page-heading"><div><div class="eyebrow">PAINEL DE CONTROLE</div><h1>Visão geral</h1><p>Acompanhe os registros e acesse rapidamente as operações da portaria.</p></div><a class="btn btn-primary btn-action" th:href="@{/entradas/new}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-lg.svg}" alt="" aria-hidden="true"> Registrar entrada</a></div>
+  <section class="metrics-grid" aria-label="Indicadores">
+    <div class="metric-card"><div class="metric-top"><span>Total de entradas</span><div class="metric-icon metric-blue"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/truck.svg}" alt="" aria-hidden="true"></div></div><strong th:text="${totalEntradas}">0</strong><small>Registros de veículos</small></div>
+    <div class="metric-card"><div class="metric-top"><span>Veículos pendentes</span><div class="metric-icon metric-orange"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/clock-history.svg}" alt="" aria-hidden="true"></div></div><strong th:text="${entradasPendentes}">0</strong><small>Aguardando saída</small></div>
+    <div class="metric-card"><div class="metric-top"><span>Objetos pendentes</span><div class="metric-icon metric-purple"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/box-seam.svg}" alt="" aria-hidden="true"></div></div><strong th:text="${objetosPendentes}">0</strong><small>Movimentações em aberto</small></div>
+    <div class="metric-card" sec:authorize="hasAuthority('ADMIN')"><div class="metric-top"><span>Usuários cadastrados</span><div class="metric-icon metric-green"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/people.svg}" alt="" aria-hidden="true"></div></div><strong th:text="${totalUsuarios}">0</strong><small>Perfis no sistema</small></div>
+  </section>
+  <div class="section-heading"><h2>Gerenciamento</h2><p>Selecione uma área para consultar ou registrar informações.</p></div>
+  <section class="modules-grid" aria-label="Módulos da portaria">
+    <article class="module-card"><div class="module-icon blue"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/truck.svg}" alt="" aria-hidden="true"></div><h3>Controle de veículos</h3><p>Registre entradas, acompanhe saídas e consulte o histórico de veículos.</p><div class="module-footer"><a th:href="@{/entradas/listar}">Ver registros <img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/arrow-right.svg}" alt="" aria-hidden="true"></a><a class="module-add" th:href="@{/entradas/new}" aria-label="Nova entrada"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-lg.svg}" alt="" aria-hidden="true"></a></div></article>
+    <article class="module-card"><div class="module-icon purple"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/box-seam.svg}" alt="" aria-hidden="true"></div><h3>Movimentação de objetos</h3><p>Organize retiradas, devoluções e objetos que aguardam finalização.</p><div class="module-footer"><a th:href="@{/objetos/listar}">Ver objetos <img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/arrow-right.svg}" alt="" aria-hidden="true"></a><a class="module-add" th:href="@{/objetos/new}" aria-label="Novo objeto"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-lg.svg}" alt="" aria-hidden="true"></a></div></article>
+    <article class="module-card" sec:authorize="hasAuthority('ADMIN')"><div class="module-icon green"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/people.svg}" alt="" aria-hidden="true"></div><h3>Gestão de usuários</h3><p>Cadastre contas e gerencie perfis e permissões de acesso ao sistema.</p><div class="module-footer"><a th:href="@{/usuarios/listar}">Gerenciar usuários <img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/arrow-right.svg}" alt="" aria-hidden="true"></a><a class="module-add" th:href="@{/usuarios/new}" aria-label="Novo usuário"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-lg.svg}" alt="" aria-hidden="true"></a></div></article>
+  </section>
+</div></body></html>

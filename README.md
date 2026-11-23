@@ -1,164 +1,223 @@
-# 🚪 Sistema de Controle de Portaria
+# 🚪 Controle de Portaria
 
-![Java](https://img.shields.io/badge/Java-8-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-2.6.3-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1.3-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-## 📖 Sobre o projeto
+O **Controle de Portaria** é um projeto pessoal que desenvolvi para colocar em prática meus conhecimentos em Java e Spring Boot, trabalhando com autenticação, regras de negócio, validação de dados e persistência em banco de dados.
 
-O **Sistema de Controle de Portaria** é uma aplicação web desenvolvida em **Java e Spring Boot** para apoiar o registro e o acompanhamento das movimentações em uma portaria, com foco no controle de **veículos, objetos e usuários**.
+A ideia é reunir em um só lugar as principais operações de uma portaria: **entrada e saída de veículos, movimentação de objetos e gerenciamento de usuários**. A aplicação também conta com indicadores na página inicial, filtros de consulta e exportação de relatórios.
 
-A aplicação reúne funcionalidades de cadastro, consulta, atualização de registros, identificação de responsáveis pelas movimentações e emissão de relatórios. A interface é renderizada no servidor com **Thymeleaf**, enquanto o armazenamento dos dados é realizado em **MySQL**, com acesso por meio do **Spring Data JPA**.
+## ⚙️ Funcionalidades
 
-## 🚀 Funcionalidades
+- **Acesso ao sistema:** autenticação com Spring Security, senhas protegidas com BCrypt e perfis de usuário.
+- **Painel inicial:** visão geral das entradas, movimentações pendentes e usuários cadastrados.
+- **Controle de veículos:** cadastro, edição, consulta e finalização de entradas, com filtros e relatório em PDF.
+- **Controle de objetos:** registro, edição, consulta e finalização das movimentações.
+- **Gerenciamento de usuários:** cadastro, edição, listagem e exclusão, respeitando as permissões de acesso.
+- **Validação dos formulários:** verificação de campos obrigatórios e formatos, com mensagens de erro na própria página.
+- **Interface responsiva:** menu lateral, navegação simplificada e opção de mostrar ou ocultar a senha no login.
 
-### 🚗 Controle de veículos
+## 🖥️ Telas do sistema
 
-- Registro de entrada com informações do veículo, placa, motorista, apartamento e tipo de acesso.
-- Registro automático da data, hora e usuário responsável pela entrada.
-- Finalização de registros com data, hora e usuário responsável pela saída.
-- Listagem de entradas e consulta por **placa** e **status** (aberta ou finalizada).
-- Telas para edição e exclusão de registros.
-- **Exportação de relatório de entradas em PDF**.
+As imagens abaixo são espaços reservados para capturas reais da aplicação. Para adicioná-las, crie a pasta `docs/imagens/`, salve os arquivos com os nomes indicados e retire os marcadores de comentário `<!--` e `-->` das linhas das imagens.
 
-### 📦 Controle de objetos
+### 1. Login
 
-- Cadastro de movimentações de objetos com funcionário responsável e observações.
-- Classificação da movimentação (saída com terceiros, saída com a mesma pessoa ou utilização interna).
-- Acompanhamento dos registros com saída pendente ou finalizada.
-- Registro dos horários e dos usuários responsáveis pela entrada e saída.
-- Listagem, filtragem por tipo, edição e exclusão de registros.
+<!-- ![Tela de login do Controle de Portaria](docs/imagens/login.png) -->
 
-### 👥 Gerenciamento de usuários
+**Imagem sugerida:** tela de login completa, com o formulário centralizado e o botão de visualizar senha. Prefira uma captura sem dados de acesso preenchidos.
 
-- Autenticação por formulário com **Spring Security**.
-- Cadastro, consulta, edição e exclusão de usuários.
-- Perfis definidos no sistema: **ADMIN**, **USER** e **SUP**.
-- Acesso às rotas de administração de usuários restrito ao perfil **ADMIN**.
-- Armazenamento de senhas com hash **BCrypt** no fluxo de cadastro.
+### 2. Painel inicial
+
+<!-- ![Painel inicial com indicadores e menu lateral](docs/imagens/painel-inicial.png) -->
+
+**Imagem sugerida:** página inicial após o login, mostrando os indicadores, os atalhos e o novo menu lateral.
+
+### 3. Registro de veículos
+
+<!-- ![Formulário de cadastro de entrada de veículo](docs/imagens/cadastro-entrada.png) -->
+
+**Imagem sugerida:** formulário de entrada de veículo, com campos e ações visíveis. Utilize informações fictícias, evitando placas ou nomes reais.
+
+### 4. Listagem de entradas
+
+<!-- ![Listagem e filtros de entradas de veículos](docs/imagens/lista-entradas.png) -->
+
+**Imagem sugerida:** tabela de entradas com os filtros de busca e as opções de consultar, finalizar e exportar relatório.
 
 ## 🛠️ Tecnologias utilizadas
 
-| Camada | Tecnologias |
+| Área | Tecnologias |
 | --- | --- |
-| Back-end | Java 8, Spring Boot 2.6.3, Spring MVC |
-| Persistência | Spring Data JPA, Hibernate, MySQL |
-| Segurança | Spring Security, BCrypt |
-| Interface | Thymeleaf, HTML, CSS, Bootstrap 5.1.3 |
+| Back-end | Java 17, Spring Boot 4.1.3, Spring MVC |
+| Persistência | MySQL, Spring Data JPA, Hibernate |
+| Segurança | Spring Security, BCrypt, proteção CSRF |
+| Front-end | Thymeleaf, HTML5, CSS3, JavaScript, Bootstrap 5 |
 | Relatórios | OpenPDF |
-| Build e dependências | Maven (com Maven Wrapper) |
-| Testes | Spring Boot Test, JUnit 5 |
+| Testes | JUnit 5, Mockito, H2 e Jakarta Bean Validation |
+| Build | Maven Wrapper |
 
-## 🗂️ Estrutura do projeto
+## 🚀 Como executar o projeto
 
-```text
-src/
-├── main/
-│   ├── java/com/example/demo/
-│   │   ├── controller/      # Controladores das páginas e ações
-│   │   ├── data/            # Configuração de conexão com o banco
-│   │   ├── exception/       # Exceções da aplicação
-│   │   ├── model/           # Entidades, enums e exportação de PDF
-│   │   ├── repository/      # Acesso aos dados com Spring Data JPA
-│   │   ├── security/        # Autenticação e autorização
-│   │   └── service/         # Regras de negócio
-│   └── resources/
-│       ├── templates/       # Páginas Thymeleaf
-│       ├── static/          # CSS, Bootstrap e ícones
-│       └── application.properties
-└── test/                    # Teste de inicialização do contexto
-```
+As instruções abaixo são para **Windows com PowerShell**. Como o projeto inclui o Maven Wrapper, não é necessário instalar o Maven separadamente.
 
-## ⚙️ Como executar localmente
+### 1. Pré-requisitos
 
-### Pré-requisitos
+- **JDK 17 ou superior** instalado (`java -version`).
+- **MySQL 8 ou superior** em execução.
+- Uma IDE ou editor, como o VS Code.
 
-- **JDK 8** (versão definida no `pom.xml`).
-- **MySQL** em execução.
-- Git (opcional, para clonar o repositório).
-- Não é necessário instalar Maven separadamente: o projeto já inclui o **Maven Wrapper**.
+### 2. Criar o banco de dados
 
-### 1. Obtenha o projeto
-
-Clone o repositório pelo endereço disponível no GitHub ou baixe o código em ZIP. Em seguida, abra um terminal na pasta que contém o arquivo `pom.xml`.
-
-### 2. Prepare o banco de dados
-
-No MySQL, crie o banco utilizado pela configuração original:
+No MySQL Workbench, utilizando uma conexão com permissões administrativas, execute:
 
 ```sql
-CREATE DATABASE demo;
+CREATE DATABASE IF NOT EXISTS portaria_db
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
 ```
 
-A conexão é definida em `src/main/java/com/example/demo/data/DataConfiguration.java` e, na versão original, aponta para o MySQL local na porta `3306`.
+Crie um usuário para a aplicação, caso ainda não tenha um:
 
-**Importante:** a configuração atual contém credenciais diretamente no código. Antes de executar ou publicar o projeto, remova essas credenciais e configure os dados de conexão de forma segura, preferencialmente por variáveis de ambiente ou por configuração externa não versionada. Ajuste também o nome do banco e o usuário conforme seu ambiente.
+```sql
+CREATE USER 'portaria_app'@'localhost' IDENTIFIED BY 'DEFINA_UMA_SENHA_FORTE';
+GRANT ALL PRIVILEGES ON portaria_db.* TO 'portaria_app'@'localhost';
+```
 
-### 3. Inicie a aplicação
+Se você já possui um usuário MySQL com acesso ao banco, pode reutilizá-lo. **Não é necessário recriar o banco ou os usuários a cada execução.**
 
-No **Windows (PowerShell)**:
+### 3. Configurar a conexão local
+
+No arquivo `src/main/resources/application.properties`, confirme que existe a configuração:
+
+```properties
+spring.profiles.default=local
+```
+
+Na raiz do projeto, crie a pasta `config` e, dentro dela, o arquivo **`application-local.properties`**:
+
+```text
+controle-portaria/
+├── config/
+│   └── application-local.properties
+├── src/
+├── pom.xml
+└── mvnw.cmd
+```
+
+Preencha o arquivo com os dados da sua instalação do MySQL:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/portaria_db
+spring.datasource.username=portaria_app
+spring.datasource.password=SUA_SENHA_DO_MYSQL
+```
+
+Substitua os valores de exemplo pelas suas credenciais. O arquivo `application-local.properties` deve permanecer **fora do Git**: confira se o `.gitignore` contém esta regra:
+
+```gitignore
+application-local.properties
+```
+
+> A senha acima é a senha do **usuário do MySQL**, não a senha utilizada para entrar na aplicação. O arquivo `.env.example` é apenas um exemplo e não é carregado automaticamente pelo Spring Boot.
+
+### 4. Criar o primeiro administrador (somente na primeira instalação)
+
+Se o banco estiver vazio e ainda não existir uma conta `ADMIN`, abra um PowerShell na raiz do projeto e execute:
+
+```powershell
+$env:APP_BOOTSTRAP_ADMIN_ENABLED="true"
+$env:APP_ADMIN_USERNAME="admin"
+$env:APP_ADMIN_NAME="Administrador"
+$env:APP_ADMIN_MATRICULA="0001"
+
+$senhaAdmin = Read-Host "Crie uma senha de administrador (minimo 12 caracteres)" -AsSecureString
+$env:APP_ADMIN_PASSWORD = [System.Net.NetworkCredential]::new("", $senhaAdmin).Password
+Remove-Variable senhaAdmin
+
+.\mvnw.cmd spring-boot:run
+```
+
+A aplicação cria a conta administrativa apenas se ainda não houver outro administrador. A senha é armazenada com BCrypt.
+
+Depois de confirmar que o login funciona, interrompa o servidor com `Ctrl + C` e desative a inicialização da conta:
+
+```powershell
+$env:APP_BOOTSTRAP_ADMIN_ENABLED="false"
+Remove-Item Env:APP_ADMIN_PASSWORD -ErrorAction SilentlyContinue
+```
+
+**Se o administrador já existe, pule esta etapa.** Não precisa criá-lo novamente em cada inicialização.
+
+### 5. Iniciar a aplicação normalmente
+
+Com o MySQL em execução, abra um terminal na raiz do projeto e execute:
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-No **Linux/macOS**:
+Acesse **http://localhost:8080/login** e entre com o usuário e a senha cadastrados na aplicação.
 
-```bash
-./mvnw spring-boot:run
-```
-
-Depois de iniciar a aplicação, acesse:
-
-**http://localhost:8080/login**
-
-> O projeto utiliza autenticação e **não inclui uma conta administrativa inicial configurada automaticamente**. Para entrar no sistema em uma instalação nova, é necessário provisionar um usuário no banco com o perfil `ADMIN` e uma senha armazenada como hash BCrypt. Não existe login ou senha padrão documentado no código fornecido.
-
-## 🧭 Principais rotas
-
-| Rota | Finalidade |
-| --- | --- |
-| `/login` | Página de autenticação |
-| `/home` | Tela inicial do sistema |
-| `/entradas/new` | Formulário de entrada de veículos |
-| `/entradas/listar` | Listagem de entradas |
-| `/entradas/status?statusEntrada=ABERTA` | Consulta de entradas em aberto |
-| `/entradas/buscar` | Busca de entradas por placa |
-| `/entradas/export/pdf` | Exportação de relatório em PDF |
-| `/objetos/new` | Formulário de registro de objetos |
-| `/objetos/listar` | Listagem de objetos |
-| `/usuarios/listar` | Gerenciamento de usuários (ADMIN) |
-
-As rotas de operação exigem autenticação. Os endereços de usuários são restritos ao perfil administrador.
+Para encerrar o servidor, pressione `Ctrl + C` no terminal. Os dados permanecem salvos no MySQL.
 
 ## 🧪 Testes
 
-Para executar os testes incluídos no projeto:
+O projeto inclui testes automatizados para o carregamento do contexto, a criação inicial do administrador, regras dos serviços e validações dos formulários.
 
-**Windows:**
+Para executar os testes:
 
 ```powershell
-.\mvnw.cmd test
+.\mvnw.cmd clean test
 ```
 
-**Linux/macOS:**
+Para executar os testes e também empacotar a aplicação:
 
-```bash
-./mvnw test
+```powershell
+.\mvnw.cmd clean verify
 ```
 
-O projeto possui um teste básico de carregamento do contexto Spring (`DemoApplicationTests`). Ainda não há uma suíte abrangente de testes automatizados para as regras de negócio.
+Durante os testes manuais, vale conferir login com senha incorreta, cadastro de veículos, campos inválidos, finalização de entradas, movimentação de objetos, permissões dos usuários e geração de relatórios PDF.
 
-## 🔎 Melhorias futuras
+## 💡 Dicas e problemas comuns
 
-- Externalizar completamente as configurações sensíveis do banco de dados.
-- Automatizar a criação segura do primeiro usuário administrador em ambiente de desenvolvimento.
-- Ampliar a cobertura de testes automatizados.
-- Revisar e aprimorar as consultas por data e os fluxos de validação e edição.
-- Atualizar as dependências e revisar aspectos de segurança antes de utilizar a aplicação em produção.
+- **`Access denied for user`:** verifique o usuário e a senha em `config/application-local.properties` e as permissões no MySQL.
+- **`Port 8080 was already in use`:** confira se outra instância da aplicação já está rodando e encerre-a antes de iniciar novamente.
+- **Mudou o código e apareceu um erro antigo:** execute `.\mvnw.cmd clean test` no PowerShell para limpar os arquivos compilados e rodar os testes novamente.
+- **Erro de validação da unidade/apartamento em instalações antigas:** confira se existe uma restrição antiga no MySQL limitando `numero_apt` ao intervalo de 1101 a 2432. Se ela existir e não corresponder mais às regras do projeto, revise-a antes de remover. Não apague a tabela ou o banco para resolver isso.
+- **Mudanças nas tabelas:** em ambiente local, o Hibernate pode atualizar o esquema com `ddl-auto=update`. Para uso em produção, o ideal é trabalhar com migrações versionadas e uma configuração mais restritiva.
+- **Segurança:** nunca envie `application-local.properties`, `.env` com senhas ou backups com dados reais para o GitHub.
 
----
+## 📁 Estrutura do projeto
 
-**Projeto desenvolvido para apoiar a organização e o acompanhamento das operações de portaria por meio de uma aplicação web.**
+```text
+controle-portaria/
+├── config/                              # Configuração local não versionada
+├── src/
+│   ├── main/
+│   │   ├── java/com/controleportaria/
+│   │   │   ├── controller/
+│   │   │   ├── model/
+│   │   │   ├── repository/
+│   │   │   ├── security/
+│   │   │   └── service/
+│   │   └── resources/
+│   │       ├── static/               # CSS, JavaScript e ícones
+│   │       ├── templates/            # Páginas Thymeleaf
+│   │       └── application.properties
+│   └── test/
+├── docs/imagens/                       # Capturas de tela para o README
+├── .gitignore
+├── pom.xml
+├── mvnw.cmd
+└── README.md
+```
+
+## 📝 Sobre o projeto
+
+Desenvolvi este sistema como um projeto pessoal para praticar o desenvolvimento de aplicações web de ponta a ponta, com atenção especial ao Back-end, à organização do código e à segurança das operações.
+
+A aplicação foi pensada para estudo e portfólio. Antes de disponibilizá-la em produção, ainda seriam necessárias etapas adicionais de revisão de segurança, configuração de HTTPS, gerenciamento de sessões, migrações de banco e testes em um ambiente de homologação.

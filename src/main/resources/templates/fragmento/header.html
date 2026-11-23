@@ -1,30 +1,29 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<div class="container-fluid" th:fragment="cabecalho">
-	<nav class="navbar navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/home">VIVÁ PORTO DE GALINHAS</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<br>
-					<a class="nav-link active" aria-current="page" href="/home"><button class="btn btn-dark"
-							type="submit">Home</button></a>
-					<a class="nav-link"><button type="button" class="btn btn-dark"><span
-								sec:authentication="name"></span> <img
-								src="/bootstrap-5.1.3-dist/icons/icons/person-circle.svg"></button></a>
-					<a class="nav-link">
-						<form th:action="@{/logout}" method="post" class="navbar-form navbar-right">
-							<button type="submit" class="btn btn-dark">Sair <img
-									src="/bootstrap-5.1.3-dist/icons/icons/box-arrow-right.svg" title="Sair"></button>
-						</form>
-					</a>
-				</div>
-			</div>
-		</div>
-	</nav>
-</div>
-
-</html>
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<aside class="app-sidebar" th:fragment="cabecalho" id="appSidebar" aria-label="Navegação principal">
+  <div class="side-brand">
+    <div class="brand-symbol"><img th:src="@{/bootstrap-5.1.3-dist/icons/icons/shield-check.svg}" alt="" aria-hidden="true"></div>
+    <div class="brand-copy"><strong>Controle de Portaria</strong><small>Gestão de acessos</small></div>
+  </div>
+  <div class="side-content">
+    <p class="side-label">PAINEL</p>
+    <nav class="side-nav" aria-label="Painel">
+      <a class="side-link" th:href="@{/home}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/grid-1x2.svg}" alt="" aria-hidden="true"><span>Visão geral</span></a>
+    </nav>
+    <p class="side-label">GERENCIAMENTO</p>
+    <nav class="side-nav" aria-label="Gerenciamento">
+      <a class="side-link" th:href="@{/entradas/listar}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/truck.svg}" alt="" aria-hidden="true"><span>Veículos</span></a>
+      <a class="side-link sub-link" th:href="@{/entradas/new}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-circle.svg}" alt="" aria-hidden="true"><span>Nova entrada</span></a>
+      <a class="side-link" th:href="@{/objetos/listar}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/box-seam.svg}" alt="" aria-hidden="true"><span>Objetos</span></a>
+      <a class="side-link sub-link" th:href="@{/objetos/new}"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/plus-circle.svg}" alt="" aria-hidden="true"><span>Novo objeto</span></a>
+      <a class="side-link" th:href="@{/usuarios/listar}" sec:authorize="hasAuthority('ADMIN')"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/people.svg}" alt="" aria-hidden="true"><span>Usuários</span></a>
+      <a class="side-link sub-link" th:href="@{/usuarios/new}" sec:authorize="hasAuthority('ADMIN')"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/person-plus.svg}" alt="" aria-hidden="true"><span>Novo usuário</span></a>
+    </nav>
+  </div>
+  <div class="side-bottom">
+    <div class="side-user"><div class="side-user-icon"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/person-fill.svg}" alt="" aria-hidden="true"></div><div class="side-user-info"><strong sec:authentication="name">Usuário</strong><small>Conectado</small></div></div>
+    <form th:action="@{/logout}" method="post" class="side-logout"><button type="submit"><img class="ui-icon" th:src="@{/bootstrap-5.1.3-dist/icons/icons/box-arrow-right.svg}" alt="" aria-hidden="true"><span>Sair da conta</span></button></form>
+  </div>
+</aside>
+</body></html>
