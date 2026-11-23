@@ -26,27 +26,19 @@ As imagens abaixo são espaços reservados para capturas reais da aplicação. P
 
 ### 1. Login
 
-<!-- ![Tela de login do Controle de Portaria](docs/imagens/login.png) -->
-
-**Imagem sugerida:** tela de login completa, com o formulário centralizado e o botão de visualizar senha. Prefira uma captura sem dados de acesso preenchidos.
+<img width="1365" height="764" alt="image" src="https://github.com/user-attachments/assets/fb40c1d6-94f2-4c1b-8fb7-40a3865b87b3" />
 
 ### 2. Painel inicial
 
-<!-- ![Painel inicial com indicadores e menu lateral](docs/imagens/painel-inicial.png) -->
-
-**Imagem sugerida:** página inicial após o login, mostrando os indicadores, os atalhos e o novo menu lateral.
+<img width="1363" height="766" alt="image" src="https://github.com/user-attachments/assets/595cf5a7-ca77-4b4b-bebf-33a1bd969560" />
 
 ### 3. Registro de veículos
 
-<!-- ![Formulário de cadastro de entrada de veículo](docs/imagens/cadastro-entrada.png) -->
-
-**Imagem sugerida:** formulário de entrada de veículo, com campos e ações visíveis. Utilize informações fictícias, evitando placas ou nomes reais.
+<img width="1365" height="766" alt="image" src="https://github.com/user-attachments/assets/4cf26abd-468d-4205-b971-6055244d3871" />
 
 ### 4. Listagem de entradas
 
-<!-- ![Listagem e filtros de entradas de veículos](docs/imagens/lista-entradas.png) -->
-
-**Imagem sugerida:** tabela de entradas com os filtros de busca e as opções de consultar, finalizar e exportar relatório.
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/2783325f-495b-4c03-9261-be4d3e39a1cf" />
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -218,6 +210,4 @@ controle-portaria/
 
 ## 📝 Sobre o projeto
 
-Desenvolvi este sistema como um projeto pessoal para praticar o desenvolvimento de aplicações web de ponta a ponta, com atenção especial ao Back-end, à organização do código e à segurança das operações.
-
-A aplicação foi pensada para estudo e portfólio. Antes de disponibilizá-la em produção, ainda seriam necessárias etapas adicionais de revisão de segurança, configuração de HTTPS, gerenciamento de sessões, migrações de banco e testes em um ambiente de homologação.
+A aplicação foi pensada praticar o desenvolvimento de aplicações web de ponta a ponta, com atenção especial ao Back-end, à organização do código e à segurança das operações. Antes de disponibilizá-la em produção, ainda seriam necessárias etapas adicionais de revisão de segurança, configuração de HTTPS, gerenciamento de sessões, migrações de banco e testes em um ambiente de homologação.
