@@ -6,7 +6,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-O **Controle de Portaria** é um projeto pessoal que desenvolvi para colocar em prática meus conhecimentos em Java e Spring Boot, trabalhando com autenticação, regras de negócio, validação de dados e persistência em banco de dados.
+O **Controle de Portaria** é um projeto deenvolvido para colocar em prática meus conhecimentos em Java e Spring Boot, trabalhando com autenticação, regras de negócio, validação de dados e persistência em banco de dados.
 
 A ideia é reunir em um só lugar as principais operações de uma portaria: **entrada e saída de veículos, movimentação de objetos e gerenciamento de usuários**. A aplicação também conta com indicadores na página inicial, filtros de consulta e exportação de relatórios.
 
